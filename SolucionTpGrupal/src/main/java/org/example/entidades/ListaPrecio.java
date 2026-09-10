@@ -13,7 +13,13 @@ public class ListaPrecio extends AuditoriaApp {
     @Column(nullable = false)
     private String denominacion;
 
-    public ListaPrecio() {
+    protected ListaPrecio() {
+    }
+
+    public ListaPrecio(String codigo, String denominacion, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.codigo = codigo;
+        this.denominacion = denominacion;
     }
 
     public ListaPrecio(String codigo, String denominacion) {

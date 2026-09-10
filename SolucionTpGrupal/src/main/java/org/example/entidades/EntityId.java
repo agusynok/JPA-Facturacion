@@ -11,7 +11,7 @@ public abstract class EntityId {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    public EntityId() {
+    protected EntityId() {
     }
 
     public EntityId(Long id) {

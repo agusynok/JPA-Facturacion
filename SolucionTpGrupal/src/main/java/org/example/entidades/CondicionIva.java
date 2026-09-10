@@ -12,13 +12,16 @@ public class CondicionIva  extends AuditoriaApp {
     @Column(nullable = false)
     private String denominacion;
 
-    public CondicionIva() {
+    protected CondicionIva() {
     }
 
-    public CondicionIva(int codigoAfip, String denominacion) {
+    public CondicionIva(int codigoAfip, String denominacion, Usuario usuarioCarga) {
+        super(usuarioCarga);
         this.codigoAfip = codigoAfip;
         this.denominacion = denominacion;
     }
+
+
 
     public int getCodigoAfip() {
         return codigoAfip;

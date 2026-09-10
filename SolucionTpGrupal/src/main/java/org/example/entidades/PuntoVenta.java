@@ -14,7 +14,15 @@ public class PuntoVenta extends AuditoriaApp {
     private String tipoEmision;
     private String domicilioComercial;
 
-    public PuntoVenta() {
+    protected PuntoVenta() {
+    }
+
+    public PuntoVenta(int numero, String descripcion, String tipoEmision, String domicilioComercial, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.numero = numero;
+        this.descripcion = descripcion;
+        this.tipoEmision = tipoEmision;
+        this.domicilioComercial = domicilioComercial;
     }
 
     public PuntoVenta(int numero, String descripcion, String tipoEmision, String domicilioComercial) {

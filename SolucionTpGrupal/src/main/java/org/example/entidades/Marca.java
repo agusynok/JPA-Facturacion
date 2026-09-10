@@ -13,7 +13,13 @@ public class Marca extends AuditoriaApp {
     @Column(nullable = false)
     private Integer codigo;
 
-    public Marca() {
+    protected Marca() {
+    }
+
+    public Marca(String denominacion, Integer codigo, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.denominacion = denominacion;
+        this.codigo = codigo;
     }
 
     public Marca(String denominacion, Integer codigo) {

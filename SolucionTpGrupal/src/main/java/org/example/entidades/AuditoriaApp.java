@@ -27,16 +27,15 @@ public abstract class AuditoriaApp extends EntityId {
     @JoinColumn(nullable = false)
     protected Usuario usuarioModificacion;
 
-    public AuditoriaApp() {
+    protected AuditoriaApp() {
     }
 
-    public AuditoriaApp(Date fechaAlta, Date fechaBaja, Date fechaModificacion, Usuario usuarioCarga, Usuario usuarioBaja, Usuario usuarioModificacion) {
-        this.fechaAlta = fechaAlta;
-        this.fechaBaja = fechaBaja;
-        this.fechaModificacion = fechaModificacion;
+    public AuditoriaApp(Usuario usuarioCarga) {
+        Date ahora = new Date();
+        this.fechaAlta = ahora;
+        this.fechaModificacion = ahora;
         this.usuarioCarga = usuarioCarga;
-        this.usuarioBaja = usuarioBaja;
-        this.usuarioModificacion = usuarioModificacion;
+        this.usuarioModificacion = usuarioCarga;
     }
 
     public Date getFechaAlta() {

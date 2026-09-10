@@ -9,7 +9,7 @@ public class Domicilio extends EntityId {
     private String nombreCalle;
     private String numeroCalle;
 
-    public Domicilio() {
+    protected Domicilio() {
     }
 
     public Domicilio(String nombreCalle, String numeroCalle) {
@@ -17,11 +17,6 @@ public class Domicilio extends EntityId {
         this.numeroCalle = numeroCalle;
     }
 
-    public Domicilio(Long id, String nombreCalle, String numeroCalle) {
-        super(id);
-        this.nombreCalle = nombreCalle;
-        this.numeroCalle = numeroCalle;
-    }
 
     public String getNombreCalle() {
         return nombreCalle;

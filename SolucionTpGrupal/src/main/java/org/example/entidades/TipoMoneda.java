@@ -14,14 +14,17 @@ public class TipoMoneda extends AuditoriaApp {
     @Column(nullable = false)
     private String simbolo;
 
-    public TipoMoneda() {
+    protected TipoMoneda() {
     }
 
-    public TipoMoneda(String codigoAfip, String denominacion, String simbolo) {
+    public TipoMoneda(String codigoAfip, String denominacion, String simbolo, Usuario usuarioCarga) {
+        super(usuarioCarga);
         this.codigoAfip = codigoAfip;
         this.denominacion = denominacion;
         this.simbolo = simbolo;
     }
+
+
 
     public String getCodigoAfip() {
         return codigoAfip;

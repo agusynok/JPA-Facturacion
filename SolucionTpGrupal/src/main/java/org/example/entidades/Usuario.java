@@ -20,7 +20,7 @@ public class Usuario extends EntityId {
     @Column(nullable = false)
     private String apellido;
 
-    public Usuario() {
+    protected Usuario() {
     }
 
     public Usuario(String usuario, String clave, String nombre, String apellido) {

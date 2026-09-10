@@ -10,17 +10,24 @@ public class Cliente extends AuditoriaApp {
     @Column(nullable = false)
     private String denominacion;
 
-
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private Contacto contacto;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private Domicilio domicilio;
 
-    public Cliente() {
+    protected Cliente() {
+    }
+
+    public Cliente(String cuitCuil, String denominacion, Contacto contacto, Domicilio domicilio, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.cuitCuil = cuitCuil;
+        this.denominacion = denominacion;
+        this.contacto = contacto;
+        this.domicilio = domicilio;
     }
 
     public Cliente(String cuitCuil, String denominacion, Contacto contacto, Domicilio domicilio) {

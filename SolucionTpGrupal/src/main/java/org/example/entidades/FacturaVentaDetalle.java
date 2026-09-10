@@ -25,11 +25,10 @@ public class FacturaVentaDetalle extends EntityId  {
     @Column(nullable = false)
     private double importeSubtotal;
 
-    public FacturaVentaDetalle() {
+    protected FacturaVentaDetalle() {
     }
 
-    public FacturaVentaDetalle(FacturaVenta factura, ListaPrecioArticulo listaPrecioArticulo, String descripcion, double cantidad, double precioUnitario, double porcentajeBonificacion, double importeNeto, double importeIva, double importeSubtotal) {
-        this.factura = factura;
+    public FacturaVentaDetalle(ListaPrecioArticulo listaPrecioArticulo, String descripcion, double cantidad, double precioUnitario, double porcentajeBonificacion, double importeNeto, double importeIva, double importeSubtotal) {
         this.listaPrecioArticulo = listaPrecioArticulo;
         this.descripcion = descripcion;
         this.cantidad = cantidad;

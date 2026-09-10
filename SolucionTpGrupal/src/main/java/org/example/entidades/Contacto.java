@@ -10,7 +10,7 @@ public class Contacto extends EntityId {
     private String telefono;
     private String celular;
 
-    public Contacto() {
+    protected Contacto() {
     }
 
     public Contacto(String email, String telefono, String celular) {

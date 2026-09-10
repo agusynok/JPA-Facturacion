@@ -13,7 +13,13 @@ public class Rubro extends AuditoriaApp {
     @Column(nullable = false)
     private Integer codigo;
 
-    public Rubro() {
+    protected Rubro() {
+    }
+
+    public Rubro(String denominacion, Integer codigo, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.denominacion = denominacion;
+        this.codigo = codigo;
     }
 
     public Rubro(String denominacion, Integer codigo) {

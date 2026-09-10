@@ -3,6 +3,8 @@ package org.example.entidades;
 import jakarta.persistence.*;
 
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +17,20 @@ public class FacturaVenta extends AuditoriaApp {
     private PuntoVenta puntoVenta;
 
     @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
-    private List<FacturaVentaDetalle> detalles;
+    private List<FacturaVentaDetalle> detalles = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private CondicionIva condicionIva;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private TipoMoneda tipoMoneda;
 
 
     private Long numero;
@@ -26,7 +41,7 @@ public class FacturaVenta extends AuditoriaApp {
     @Column(nullable = false)
     private double importeTotal;
     private String cae;
-    private Date caeFechaVencimiento;
+    private LocalDateTime caeFechaVencimiento;
     private String resultadoAfip;
     private String motivoRechazo;
     @Column(nullable = false)
@@ -34,15 +49,16 @@ public class FacturaVenta extends AuditoriaApp {
     private Date fechaAnulacion;
     private String observaciones;
 
-    public FacturaVenta() {
-    }
+    protected FacturaVenta() {}
 
-    public FacturaVenta(PuntoVenta puntoVenta, List<FacturaVentaDetalle> detalles, Long numero, Date fechaEmision, double importeCobrado, double importeSaldo, double importeTotal, String cae, Date caeFechaVencimiento, String resultadoAfip, String motivoRechazo, String estado, Date fechaAnulacion, String observaciones) {
+    public FacturaVenta(Cliente cliente,CondicionIva condicionIva, TipoMoneda tipoMoneda,PuntoVenta puntoVenta, Long numero, double importeTotal, double importeSaldo, String cae, LocalDateTime caeFechaVencimiento, String resultadoAfip, String estado, String observaciones, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.cliente = cliente;
+        this.condicionIva = condicionIva;
+        this.tipoMoneda = tipoMoneda;
         this.puntoVenta = puntoVenta;
-        this.detalles = detalles;
         this.numero = numero;
-        this.fechaEmision = fechaEmision;
-        this.importeCobrado = importeCobrado;
+        this.fechaEmision = (fechaEmision != null) ? fechaEmision : new Date();
         this.importeSaldo = importeSaldo;
         this.importeTotal = importeTotal;
         this.cae = cae;
@@ -50,8 +66,31 @@ public class FacturaVenta extends AuditoriaApp {
         this.resultadoAfip = resultadoAfip;
         this.motivoRechazo = motivoRechazo;
         this.estado = estado;
-        this.fechaAnulacion = fechaAnulacion;
         this.observaciones = observaciones;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public CondicionIva getCondicionIva() {
+        return condicionIva;
+    }
+
+    public void setCondicionIva(CondicionIva condicionIva) {
+        this.condicionIva = condicionIva;
+    }
+
+    public TipoMoneda getTipoMoneda() {
+        return tipoMoneda;
+    }
+
+    public void setTipoMoneda(TipoMoneda tipoMoneda) {
+        this.tipoMoneda = tipoMoneda;
     }
 
     public PuntoVenta getPuntoVenta() {
@@ -123,11 +162,11 @@ public class FacturaVenta extends AuditoriaApp {
         this.cae = cae;
     }
 
-    public Date getCaeFechaVencimiento() {
+    public LocalDateTime getCaeFechaVencimiento() {
         return caeFechaVencimiento;
     }
 
-    public void setCaeFechaVencimiento(Date caeFechaVencimiento) {
+    public void setCaeFechaVencimiento(LocalDateTime caeFechaVencimiento) {
         this.caeFechaVencimiento = caeFechaVencimiento;
     }
 

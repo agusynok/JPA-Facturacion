@@ -21,7 +21,16 @@ public class Articulo extends AuditoriaApp {
     private String denominacion;
 
 
-    public Articulo() {}
+    protected Articulo() {}
+
+    public Articulo(Rubro rubro, Marca marca, String codigo, String denominacion, Usuario usuarioCarga) {
+        super(usuarioCarga);
+        this.rubro = rubro;
+        this.marca = marca;
+        this.codigo = codigo;
+        this.denominacion = denominacion;
+    }
+
     public Articulo(Rubro rubro, Marca marca, String codigo, String denominacion) {
         this.rubro = rubro;
         this.marca = marca;
